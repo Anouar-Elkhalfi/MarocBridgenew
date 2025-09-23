@@ -1,0 +1,48 @@
+<!-- filepath: app/views/candidate_profiles/_form.html.erb -->
+<%= form_with(model: @candidate_profile, local: true) do |form| %>
+  <% if @candidate_profile.errors.any? %>
+    <div>
+      <h2><%= pluralize(@candidate_profile.errors.count, "erreur") %> :</h2>
+      <ul>
+        <% @candidate_profile.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :current_position, "Poste actuel" %><br>
+    <%= form.text_field :current_position %>
+  </div>
+
+  <div>
+    <%= form.label :years_of_experience, "Années d'expérience" %><br>
+    <%= form.number_field :years_of_experience %>
+  </div>
+
+  <div>
+    <%= form.label :location, "Localisation" %><br>
+    <%= form.text_field :location %>
+  </div>
+
+  <div>
+    <%= form.label :linkedin_url, "Lien LinkedIn" %><br>
+    <%= form.text_field :linkedin_url %>
+  </div>
+
+  <div>
+    <%= form.label :looking_for_job, "En recherche d'emploi ?" %>
+    <%= form.check_box :looking_for_job %>
+  </div>
+
+  <div>
+    <%= form.label :skills, "Compétences" %><br>
+    <%= form.text_area :skills, rows: 3 %>
+    <small>Format JSON ou liste séparée par des virgules</small>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

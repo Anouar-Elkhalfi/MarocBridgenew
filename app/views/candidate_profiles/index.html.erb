@@ -1,0 +1,28 @@
+<!-- filepath: app/views/candidate_profiles/index.html.erb -->
+<h1>Liste des profils candidats</h1>
+<%= link_to "Créer un candidat", new_candidate_profile_path, class: "btn btn-success" %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nom d'utilisateur</th>
+      <th>Poste actuel</th>
+      <th>Expérience</th>
+      <th>Localisation</th>
+      <th>Voir</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @candidate_profiles.each do |profile| %>
+      <tr>
+        <td><%= profile.user.try(:email) || "N/A" %></td>
+        <td><%= profile.current_position %></td>
+        <td><%= profile.years_of_experience %> ans</td>
+        <td><%= profile.location %></td>
+        <td>
+          <%= link_to "Voir", candidate_profile_path(profile) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

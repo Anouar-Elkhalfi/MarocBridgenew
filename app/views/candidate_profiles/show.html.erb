@@ -1,0 +1,25 @@
+<!-- filepath: app/views/candidate_profiles/show.html.erb -->
+<h1>Mon profil candidat</h1>
+
+<p><strong>Poste actuel :</strong> <%= @candidate_profile.current_position %></p>
+<p><strong>Années d'expérience :</strong> <%= @candidate_profile.years_of_experience %></p>
+<p><strong>Localisation :</strong> <%= @candidate_profile.location %></p>
+<p><strong>Lien LinkedIn :</strong> <%= link_to @candidate_profile.linkedin_url, @candidate_profile.linkedin_url, target: "_blank" %></p>
+<p><strong>En recherche d'emploi :</strong> <%= @candidate_profile.looking_for_job ? "Oui" : "Non" %></p>
+<p><strong>Compétences :</strong>
+  <% if @candidate_profile.skills.is_a?(Array) %>
+    <%= @candidate_profile.skills.join(", ") %>
+  <% else %>
+    <%= @candidate_profile.skills %>
+  <% end %>
+</p>
+
+<%= link_to "Modifier", edit_candidate_profile_path(@candidate_profile), class: "btn btn-primary" %>
+<%= link_to "Tous les profils", candidate_profiles_path %>
+
+
+<!-- filepath: app/views/candidate_profiles/show.html.erb -->
+<%= link_to "Supprimer", candidate_profile_path(@candidate_profile),
+      data: { turbo_method: :delete, turbo_confirm: "Es-tu sûr de vouloir supprimer ton profil ?" },
+      class: "btn btn-danger" %>
+      
