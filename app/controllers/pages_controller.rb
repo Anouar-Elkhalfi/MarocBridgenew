@@ -3,4 +3,8 @@ class PagesController < ApplicationController
 
   def home
   end
+
+  def index
+    # Action vide pour éviter l'erreur de callback
+  end
 end

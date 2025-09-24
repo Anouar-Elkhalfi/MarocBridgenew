@@ -1,0 +1,11 @@
+<h1>Nouvelle offre d'emploi</h1>
+<% if @job_offer.errors.any? %>
+  <div class="alert alert-danger">
+    <ul>
+      <% @job_offer.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= render 'form' %>

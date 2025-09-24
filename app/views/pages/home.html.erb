@@ -1,2 +1,9 @@
 <!-- filepath: app/views/pages/home.html.erb -->
+<% if user_signed_in? %>
+  <p>
+    Bonjour <%= current_user.first_name %> <%= current_user.last_name %> (<%= current_user.role %>)
+  </p>
+<% end %>
+
 <%= link_to "Voir tous les profils candidats", candidate_profiles_path, class: "btn btn-primary" %>
+<%= link_to "Voir toutes les offres d'emploi", job_offers_path, class: "btn btn-info" %>

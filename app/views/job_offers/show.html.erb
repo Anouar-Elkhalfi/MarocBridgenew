@@ -1,0 +1,32 @@
+<!-- filepath: app/views/job_offers/show.html.erb -->
+<h1><%= @job_offer.title %></h1>
+
+<p><strong>Description :</strong><br>
+  <%= simple_format(@job_offer.description) %>
+</p>
+
+<p><strong>Exigences :</strong><br>
+  <%= simple_format(@job_offer.requirements) %>
+</p>
+
+<p><strong>Lieu :</strong> <%= @job_offer.location %></p>
+<p><strong>Type de contrat :</strong> <%= @job_offer.contract_type %></p>
+<p><strong>Fourchette salariale :</strong> <%= @job_offer.salary_range %></p>
+
+<p>
+  <strong>Publié par :</strong>
+  <%= @job_offer.published_by_type %> n°<%= @job_offer.published_by_id %>
+</p>
+
+<!-- filepath: app/views/job_offers/show.html.erb -->
+<%= link_to "Retour à la liste", job_offers_path, class: "btn btn-secondary" %>
+
+<% if policy(@job_offer).edit? %>
+  <%= link_to "Modifier", edit_job_offer_path(@job_offer), class: "btn btn-primary" %>
+<% end %>
+
+<% if policy(@job_offer).destroy? %>
+  <%= link_to "Supprimer", job_offer_path(@job_offer),
+        data: { turbo_method: :delete, turbo_confirm: "Supprimer cette offre ?" },
+        class: "btn btn-danger" %>
+<% end %>

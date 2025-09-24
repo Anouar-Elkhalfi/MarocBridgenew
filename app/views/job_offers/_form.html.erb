@@ -1,0 +1,39 @@
+<!-- filepath: app/views/job_offers/_form.html.erb -->
+<%= form_with(model: @job_offer, local: true) do |form| %>
+  <% if @job_offer.errors.any? %>
+    <div class="alert alert-danger">
+      <ul>
+        <% @job_offer.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div>
+    <%= form.label :title, "Titre" %>
+    <%= form.text_field :title %>
+  </div>
+  <div>
+    <%= form.label :description, "Description" %>
+    <%= form.text_area :description %>
+  </div>
+  <div>
+    <%= form.label :requirements, "Exigences" %>
+    <%= form.text_area :requirements %>
+  </div>
+  <div>
+    <%= form.label :location, "Lieu" %>
+    <%= form.text_field :location %>
+  </div>
+  <div>
+    <%= form.label :contract_type, "Type de contrat" %>
+    <%= form.text_field :contract_type %>
+  </div>
+  <div>
+    <%= form.label :salary_range, "Fourchette salariale" %>
+    <%= form.text_field :salary_range %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
